@@ -93,7 +93,7 @@ while True:
                 print("Press Enter To See Your Resume Complete Optimised Score")
                 Enter = input()
                 print("Your Total Resume match score is " + str(revised_sum) + "%")
-                print("You Are Missing These Keywords- Add Them For Better Results")
+                print("You Are Missing These Keywords- Add Them For Better Results:")
                 string_1 = resume 
                 string_2 = resume + jobdescription
 
@@ -108,7 +108,7 @@ while True:
                 
             elif (matchPercentage >= 80):
                 print("You Have Achieved A Great Match Score ")
-                print("You Have These Keywords Matched")
+                print("You Have These Keywords Matched:")
                 string_1 = resume
                 string_2 = jobdescription
 
@@ -122,7 +122,7 @@ while True:
                 print(matches)
 
             else:
-                print("Application is missing vital Keywords")
+                print("Application is missing vital Keywords:")
                 
                 #" Create a variable to hold txt strings of both resume and job description"
 
@@ -141,7 +141,7 @@ while True:
                 
                 #" Create a variable to hold txt strings of both resume and job description"
                 
-                print("However  You Have These Keywords Matched")
+                print("However  You Have These Keywords Matched:")
                 string_1 = resume
                 string_2 = jobdescription
 
@@ -201,7 +201,7 @@ while True:
                 print("Press Enter To See Your Resume Complete Optimised Score")
                 Enter = input()
                 print("Your Total Resume match score is " + str(revised_sum) + "%")
-                print("You Are Missing These Keywords- Add Them For Better Results")
+                print("You Are Missing These Keywords- Add Them For Better Results:")
                 string_1 = resume 
                 string_2 = resume + jobdescription
 
@@ -216,7 +216,7 @@ while True:
                 
             elif (matchPercentage >= 80):
                 print("You Have Achieved A Great Match Score ")
-                print("You Have These Keywords Matched")
+                print("You Have These Keywords Matched:")
                 string_1 = resume
                 string_2 = jobdescription
 
@@ -230,7 +230,7 @@ while True:
                 print(matches)
                 
             else:
-                print("Application is missing vital Keywords")
+                print("Application is missing vital Keywords:")
                 #cVect.get_feature_names - printing this method will return strings of both sets
                  
                 string_1 = resume 
@@ -245,7 +245,7 @@ while True:
                 differences = set_2.difference(set_1)
                 print(*differences)
                 
-                print("However  You Have These Keywords Matched")
+                print("However  You Have These Keywords Matched:")
 
                 string_1 = resume
                 string_2 = jobdescription
