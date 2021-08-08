@@ -85,16 +85,16 @@ while True:
             matchPercentage = round(matchPercentage, 2)
             print("Your resume matches about " + str(matchPercentage) + "%" + " of the job description")
 
-            if (matchPercentage >= 50 < 90):
+            if (matchPercentage >= 50 < 80):
                 revised_sum = matchPercentage + 10 
                 
-                #" If a match percentage is greater or equal to 50 but less than 85, an optimise score of 15 is added"
+                #" If a match percentage is greater or equal to 50 but less than 80, an optimise score of 10 is added"
                 
                 print("Press Enter To See Your Resume Complete Optimised Score")
                 Enter = input()
                 print("Your Total Resume match score is " + str(revised_sum) + "%")
                 
-            elif (matchPercentage > 90):
+            elif (matchPercentage > 80):
                 print("You Have Achieved A Great Match Score ")
 
             else:
@@ -172,13 +172,13 @@ while True:
             matchPercentage = round(matchPercentage, 2)
             print("Your resume matches about " + str(matchPercentage) + "%" + " of the job description")
 
-            if (matchPercentage >= 50 < 90):
+            if (matchPercentage >= 50 < 80):
                 revised_sum = matchPercentage + 10
                 print("Press Enter To See Your Resume Complete Optimised Score")
                 Enter = input()
                 print("Your Total Resume match score is " + str(revised_sum) + "%")
             
-            elif (matchPercentage > 90):
+            elif (matchPercentage > 80):
                 print("You Have Achieved A Great Match Score ")
 
             else:
