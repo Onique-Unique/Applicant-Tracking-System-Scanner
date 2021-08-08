@@ -10,7 +10,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 #" CREATE A VARIABLE TO PULL PDF RESUME SOURCE/ DESTINATION FILE"
 #" CREATE A VARIABLE TO DEPOSIT/ SAVE PDF TO DOCX CONVERTED RESUME SOURCE/ DESTINATION FILE"
 
-print("Welome To Free ATS Scanner Please Enter Your Name")
+print("Welcome To Free ATS Scanner Please Enter Your Name")
 name = input()
 
 print("Hello " + name + " Let's Get Started")
@@ -93,9 +93,33 @@ while True:
                 print("Press Enter To See Your Resume Complete Optimised Score")
                 Enter = input()
                 print("Your Total Resume match score is " + str(revised_sum) + "%")
+                print("You Are Missing These Keywords- Add Them For Better Results")
+                string_1 = resume 
+                string_2 = resume + jobdescription
+
+                # First split your strings into sets of words
+                set_1 = set(string_1.split())
+                set_2 = set(string_2.split())
+
+                # Compare the sets to find where they both have the same value
                 
-            elif (matchPercentage > 80):
+                differences = set_2.difference(set_1)
+                print(*differences)
+                
+            elif (matchPercentage >= 80):
                 print("You Have Achieved A Great Match Score ")
+                print("You Have These Keywords Matched")
+                string_1 = resume
+                string_2 = jobdescription
+
+                # First split your strings into sets of words
+                set_1 = set(string_1.split())
+                set_2 = set(string_2.split())
+
+                # Compare the sets to find where they both have the same value
+                
+                matches = set_1.intersection(set_2)
+                print(matches)
 
             else:
                 print("Application is missing vital Keywords")
@@ -177,10 +201,34 @@ while True:
                 print("Press Enter To See Your Resume Complete Optimised Score")
                 Enter = input()
                 print("Your Total Resume match score is " + str(revised_sum) + "%")
-            
-            elif (matchPercentage > 80):
-                print("You Have Achieved A Great Match Score ")
+                print("You Are Missing These Keywords- Add Them For Better Results")
+                string_1 = resume 
+                string_2 = resume + jobdescription
 
+                # First split your strings into sets of words
+                set_1 = set(string_1.split())
+                set_2 = set(string_2.split())
+
+                # Compare the sets to find where they both have the same value
+                
+                differences = set_2.difference(set_1)
+                print(*differences)
+                
+            elif (matchPercentage >= 80):
+                print("You Have Achieved A Great Match Score ")
+                print("You Have These Keywords Matched")
+                string_1 = resume
+                string_2 = jobdescription
+
+                # First split your strings into sets of words
+                set_1 = set(string_1.split())
+                set_2 = set(string_2.split())
+
+                # Compare the sets to find where they both have the same value
+                
+                matches = set_1.intersection(set_2)
+                print(matches)
+                
             else:
                 print("Application is missing vital Keywords")
                 #cVect.get_feature_names - printing this method will return strings of both sets
