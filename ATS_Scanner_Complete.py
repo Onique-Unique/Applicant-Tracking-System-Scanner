@@ -22,24 +22,30 @@ while True:
         if Press == 1:
             print("Copy PDF Resume Name Here")
             PDFresume = input()
-            pdf_file = r"C:\Users\kiddo\OneDrive\Desktop\Automate Codes 1 -6/" + PDFresume + ".pdf" # source file
-            docx_file = r"C:\Users\kiddo\OneDrive\Desktop\Automate Codes 1 -6/" + PDFresume + ".docx"  # destination file
+            pdf_file = r"C:\"" + PDFresume + ".pdf" # source file
+            docx_file = r"C:\"" + PDFresume + ".docx"  # destination file
+            
+            #" Please note your C: drive/ file path information will be required to proceed"
+            #" E.g \Users\name\location of file"
             
             print("Please Wait for Process PDF Converter To Complete")
             print("You Will be Prompt For Further Information")
+            
             # convert resume pdf to docx
             cv = Converter(pdf_file)
             cv.convert(docx_file, start=0, end=None)
             cv.close()
+            
             #" CREATE A VARIABLE TO PULL PDF JOB DESCRIPTION SOURCE/ DESTINATION FILE IF ANY"
             #" CREATE A VARIABLE TO DEPOSIT/ SAVE PDF TO DOCX CONVERTED JOB DESCRIPTION SOURCE/ DESTINATION FILE"
             print("Copy PDF Job Description Name Here")
             PDFJobDesc = input()
-            pdf_file = r"C:\Users\kiddo\OneDrive\Desktop\Automate Codes 1 -6/" + PDFJobDesc + ".pdf" # source file
-            docx_file = r"C:\Users\kiddo\OneDrive\Desktop\Automate Codes 1 -6/" + PDFJobDesc + ".docx"  # destination file
+            pdf_file = r"C:\"" + PDFJobDesc + ".pdf" # source file
+            docx_file = r"C:\"" + PDFJobDesc + ".docx"  # destination file
 
             print("Please Wait for Process PDF Converter To Complete")
-            # convert job description pdf to docx if any
+            
+            # convert job description pdf to docx
             cv = Converter(pdf_file)
             cv.convert(docx_file, start=0, end=None)
             cv.close()
@@ -56,6 +62,7 @@ while True:
             
             #" CV.FIT_TRANSFORM() TAKES ONLY ONE ARGUMENT"
             #" CREATE A VARIABLE TO HOLD CONVERTED RESUME & JOB DESCRIPTION DOCX TO TEXT PROCESS"
+            
             text = [resume, jobdescription]
 
             cv = CountVectorizer()
@@ -79,7 +86,10 @@ while True:
             print("Your resume matches about " + str(matchPercentage) + "%" + " of the job description")
 
             if (matchPercentage >= 50 < 85):
-                revised_sum = matchPercentage + 15
+                revised_sum = matchPercentage + 15 
+                
+                #" If a match percentage is greater or equal to 50 but less than 85, an optimise score of 15 is added"
+                
                 print("Press Enter To See Your Resume Complete Optimised Score")
                 Enter = input()
                 print("Your Total Resume match score is " + str(revised_sum) + "%")
@@ -89,6 +99,8 @@ while True:
 
             else:
                 print("Application is missing vital Keywords")
+                
+                #" Create a variable to hold txt strings of both resume and job description"
 
                 string_1 = resume 
                 string_2 = resume + jobdescription
@@ -97,10 +109,13 @@ while True:
                 set_1 = set(string_1.split())
                 set_2 = set(string_2.split())
 
-                # Compare the sets to find where they both have the same value
+                #" Compare sets to find where they both have the different value"
+                #" Then print results to give User the ability to identify missing keywords for resume"
                 
                 differences = set_2.difference(set_1)
                 print(*differences)
+                
+                #" Create a variable to hold txt strings of both resume and job description"
                 
                 print("However  You Have These Keywords Matched")
                 string_1 = resume
@@ -110,11 +125,14 @@ while True:
                 set_1 = set(string_1.split())
                 set_2 = set(string_2.split())
 
-                # Compare the sets to find where they both have the same value
+                #" Compare the sets to find where they both have the same value"
+                #" Then print results to give User the ability to identify common keywords from job description"
                 
                 matches = set_1.intersection(set_2)
                 print(matches)
-       
+                
+       #" This Section is the alternative if the User posses Docx files instead of PDF"
+    
         if Press == 2:
             print("Copy Docx Resume Name Here")
             DocxResume = input()
