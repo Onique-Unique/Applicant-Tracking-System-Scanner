@@ -101,7 +101,7 @@ while True:
                 set_1 = set(string_1.split())
                 set_2 = set(string_2.split())
 
-                # Compare the sets to find where they both have the same value
+                # Compare the sets to find where they both have different value
                 
                 differences = set_2.difference(set_1)
                 print(*differences)
@@ -133,7 +133,7 @@ while True:
                 set_1 = set(string_1.split())
                 set_2 = set(string_2.split())
 
-                #" Compare sets to find where they both have the different value"
+                #" Compare sets to find where they both have different value"
                 #" Then print results to give User the ability to identify missing keywords for resume"
                 
                 differences = set_2.difference(set_1)
@@ -209,7 +209,7 @@ while True:
                 set_1 = set(string_1.split())
                 set_2 = set(string_2.split())
 
-                # Compare the sets to find where they both have the same value
+                # Compare the sets to find where they both have different value
                 
                 differences = set_2.difference(set_1)
                 print(*differences)
@@ -240,7 +240,7 @@ while True:
                 set_1 = set(string_1.split())
                 set_2 = set(string_2.split())
 
-                # Compare the sets to find where they both have the same value
+                # Compare the sets to find where they both have different value
                 
                 differences = set_2.difference(set_1)
                 print(*differences)
