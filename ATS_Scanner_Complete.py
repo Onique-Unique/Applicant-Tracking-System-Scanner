@@ -16,32 +16,36 @@ name = input()
 print("Hello " + name + " Let's Get Started")
 
 while True: 
-    print("Is Your resume and job description in PDF format? type 1 for YES! 2 for NO! q to exit")   
+    print("Is Your resume and job description in PDF format? type 1 for YES! 2 for NO! 3 to exit")   
     Press = int(input())
     for Choice in range(1):
+        
+        if Press == 3:
+            sys.exit()
+            
         if Press == 1:
             print("Copy PDF Resume Name Here")
             PDFresume = input()
-            pdf_file = r"C:\"" + PDFresume + ".pdf" # source file
-            docx_file = r"C:\"" + PDFresume + ".docx"  # destination file
+            pdf_file = r"C:\Users\kiddo\OneDrive\Desktop\Automate Codes 1 -6/" + PDFresume + ".pdf" # source file
+            docx_file = r"C:\Users\kiddo\OneDrive\Desktop\Automate Codes 1 -6/" + PDFresume + ".docx"  # destination file
             
             #" Please note your C: drive/ file path information will be required to proceed"
             #" E.g \Users\name\location of file"
             
             print("Please Wait for Process PDF Converter To Complete")
             print("You Will be Prompt For Further Information")
-            
+           
             # convert resume pdf to docx
             cv = Converter(pdf_file)
             cv.convert(docx_file, start=0, end=None)
             cv.close()
-            
+           
             #" CREATE A VARIABLE TO PULL PDF JOB DESCRIPTION SOURCE/ DESTINATION FILE IF ANY"
             #" CREATE A VARIABLE TO DEPOSIT/ SAVE PDF TO DOCX CONVERTED JOB DESCRIPTION SOURCE/ DESTINATION FILE"
             print("Copy PDF Job Description Name Here")
             PDFJobDesc = input()
-            pdf_file = r"C:\"" + PDFJobDesc + ".pdf" # source file
-            docx_file = r"C:\"" + PDFJobDesc + ".docx"  # destination file
+            pdf_file = r"C:\Users\kiddo\OneDrive\Desktop\Automate Codes 1 -6/" + PDFJobDesc + ".pdf" # source file
+            docx_file = r"C:\Users\kiddo\OneDrive\Desktop\Automate Codes 1 -6/" + PDFJobDesc + ".docx"  # destination file
 
             print("Please Wait for Process PDF Converter To Complete")
             
@@ -75,8 +79,8 @@ while True:
             #" CREATE A VARIABLE TO HOLD DOCX TO TEXT CONVERTED FILES FOR COMPARING"
             #" CREATE A COMPARE VARIABLE FOR CONVERTED DOCX TO TEXT FILES"
 
-            resume_reference = resume
-            job_reference = jobdescription
+            resume_reference = resume.lower()
+            job_reference = jobdescription.lower()
             compare = [resume_reference , job_reference]
             cVect = CountVectorizer()
             count_matrix = cVect.fit_transform(compare)
@@ -86,10 +90,10 @@ while True:
             print("Your resume matches about " + str(matchPercentage) + "%" + " of the job description")
 
             if (matchPercentage >= 50 < 80):
-                revised_sum = matchPercentage + 10 
-                
-                #" If a match percentage is greater or equal to 50 but less than 80, an optimise score of 10 is added"
-                
+                revised_sum = matchPercentage + 10
+               
+               #" If a match percentage is greater or equal to 50 but less than 80, an optimise score of 10 is added"
+               
                 print("Press Enter To See Your Resume Complete Optimised Score")
                 Enter = input()
                 print("Your Total Resume match score is " + str(revised_sum) + "%")
@@ -101,10 +105,55 @@ while True:
                 set_1 = set(string_1.split())
                 set_2 = set(string_2.split())
 
-                # Compare the sets to find where they both have different value
+                # Compare the sets to find where they both have the same value
                 
                 differences = set_2.difference(set_1)
                 print(*differences)
+                
+                print("Your Resume is Optimised for these Industry")
+                print("Each Industry is rated out of 10")
+                
+                if "quality" in resume_reference:
+                    quality_score = resume_reference.count("quality")
+                    print("Your Score for Quality Assurance is: " + str(quality_score))
+                
+                else:
+                    print("Your Score for Quality Assurance is: 0")
+                    
+                if "operations" in resume_reference:
+                    operations_score = resume_reference.count("operations")
+                    print("Your Score for Operations is: " + str(operations_score))
+                
+                else:
+                    print("Your Score for Operations is: 0")
+                    
+                if "inventory" in resume_reference:
+                    supply_score = resume_reference.count("inventory")
+                    print("Your Score for Supply Chain is: " + str(supply_score))
+                
+                else:
+                    print("Your Score for Supply Chain is: 0")
+                    
+                if "administration" in resume_reference:
+                    project_score = resume_reference.count("administration")
+                    print("Your Score for Finance is: " + str(project_score))
+                
+                else:
+                    print("Your Score for Finance is: 0")
+                    
+                if "programming" in resume_reference:
+                    data_score = resume_reference.count("programming")
+                    print("Your Score for Data Analytics is: " + str(data_score))
+                
+                else:
+                    print("Your Score for Data Analytics is: 0")
+                    
+                if "health" in resume_reference:
+                    health_score = resume_reference.count("health")
+                    print("Your Score for Health Care is: " + str(health_score))
+                
+                else:
+                    print("Your Score for Health Care is: 0")
                 
             elif (matchPercentage >= 80):
                 print("You Have Achieved A Great Match Score ")
@@ -120,20 +169,65 @@ while True:
                 
                 matches = set_1.intersection(set_2)
                 print(matches)
-
+                
+                print("Your Resume is Optimised for these Industry")
+                print("Each Industry is rated out of 10")
+                
+                if "quality" in resume_reference:
+                    quality_score = resume_reference.count("quality")
+                    print("Your Score for Quality Assurance is: " + str(quality_score))
+                
+                else:
+                    print("Your Score for Quality Assurance is: 0")
+                    
+                if "operations" in resume_reference:
+                    operations_score = resume_reference.count("operations")
+                    print("Your Score for Operations is: " + str(operations_score))
+                
+                else:
+                    print("Your Score for Operations is: 0")
+                    
+                if "inventory" in resume_reference:
+                    supply_score = resume_reference.count("inventory")
+                    print("Your Score for Supply Chain is: " + str(supply_score))
+                
+                else:
+                    print("Your Score for Supply Chain is: 0")
+                    
+                if "administration" in resume_reference:
+                    project_score = resume_reference.count("administration")
+                    print("Your Score for Finance is: " + str(project_score))
+                
+                else:
+                    print("Your Score for Finance is: 0")
+                    
+                if "programming" in resume_reference:
+                    data_score = resume_reference.count("programming")
+                    print("Your Score for Data Analytics is: " + str(data_score))
+                
+                else:
+                    print("Your Score for Data Analytics is: 0")
+                    
+                if "health" in resume_reference:
+                    health_score = resume_reference.count("health")
+                    print("Your Score for Health Care is: " + str(health_score))
+                
+                else:
+                    print("Your Score for Health Care is: 0")
+       
             else:
                 print("Application is missing vital Keywords:")
-                
-                #" Create a variable to hold txt strings of both resume and job description"
 
+                #" Create a variable to hold txt strings of both resume and job description"
+                
                 string_1 = resume 
                 string_2 = resume + jobdescription
 
                 # First split your strings into sets of words
                 set_1 = set(string_1.split())
                 set_2 = set(string_2.split())
-
-                #" Compare sets to find where they both have different value"
+                
+                #" Compare sets to find where they both have the different value"
                 #" Then print results to give User the ability to identify missing keywords for resume"
                 
                 differences = set_2.difference(set_1)
@@ -149,14 +243,59 @@ while True:
                 set_1 = set(string_1.split())
                 set_2 = set(string_2.split())
 
-                #" Compare the sets to find where they both have the same value"
+                # Compare the sets to find where they both have the same value
                 #" Then print results to give User the ability to identify common keywords from job description"
                 
                 matches = set_1.intersection(set_2)
                 print(matches)
                 
-       #" This Section is the alternative if the User posses Docx files instead of PDF"
-    
+                print("Your Resume is Optimised for these Industry")
+                print("Each Industry is rated out of 10")
+                
+                if "quality" in resume_reference:
+                    quality_score = resume_reference.count("quality")
+                    print("Your Score for Quality Assurance is: " + str(quality_score))
+                
+                else:
+                    print("Your Score for Quality Assurance is: 0")
+                    
+                if "operations" in resume_reference:
+                    operations_score = resume_reference.count("operations")
+                    print("Your Score for Operations is: " + str(operations_score))
+                
+                else:
+                    print("Your Score for Operations is: 0")
+                    
+                if "inventory" in resume_reference:
+                    supply_score = resume_reference.count("inventory")
+                    print("Your Score for Supply Chain is: " + str(supply_score))
+                
+                else:
+                    print("Your Score for Supply Chain is: 0")
+                    
+                if "administration" in resume_reference:
+                    project_score = resume_reference.count("administration")
+                    print("Your Score for Finance is: " + str(project_score))
+                
+                else:
+                    print("Your Score for Finance is: 0")
+                    
+                if "programming" in resume_reference:
+                    data_score = resume_reference.count("programming")
+                    print("Your Score for Data Analytics is: " + str(data_score))
+                
+                else:
+                    print("Your Score for Data Analytics is: 0")
+                    
+                if "health" in resume_reference:
+                    health_score = resume_reference.count("health")
+                    print("Your Score for Health Care is: " + str(health_score))
+                
+                else:
+                    print("Your Score for Health Care is: 0")
+       
+        #" This Section is the alternative if the User posses Docx files instead of PDF"
+        
         if Press == 2:
             print("Copy Docx Resume Name Here")
             DocxResume = input()
@@ -186,8 +325,8 @@ while True:
             #" CREATE A VARIABLE TO HOLD DOCX TO TEXT CONVERTED FILES FOR COMPARING"
             #" CREATE A COMPARE VARIABLE FOR CONVERTED DOCX TO TEXT FILES"
 
-            resume_reference = resume
-            job_reference = jobdescription
+            resume_reference = resume.lower()
+            job_reference = jobdescription.lower()
             compare = [resume_reference , job_reference]
             cVect = CountVectorizer()
             count_matrix = cVect.fit_transform(compare)
@@ -209,11 +348,56 @@ while True:
                 set_1 = set(string_1.split())
                 set_2 = set(string_2.split())
 
-                # Compare the sets to find where they both have different value
+                # Compare the sets to find where they both have the same value
                 
                 differences = set_2.difference(set_1)
                 print(*differences)
                 
+                print("Your Resume is Optimised for these Industry")
+                print("Each Industry is rated out of 10")
+                
+                if "quality" in resume_reference:
+                    quality_score = resume_reference.count("quality")
+                    print("Your Score for Quality Assurance is: " + str(quality_score))
+                
+                else:
+                    print("Your Score for Quality Assurance is: 0")
+                    
+                if "operations" in resume_reference:
+                    operations_score = resume_reference.count("operations")
+                    print("Your Score for Operations is: " + str(operations_score))
+                
+                else:
+                    print("Your Score for Operations is: 0")
+                    
+                if "inventory" in resume_reference:
+                    supply_score = resume_reference.count("inventory")
+                    print("Your Score for Supply Chain is: " + str(supply_score))
+                
+                else:
+                    print("Your Score for Supply Chain is: 0")
+                    
+                if "administration" in resume_reference:
+                    project_score = resume_reference.count("administration")
+                    print("Your Score for Finance is: " + str(project_score))
+                
+                else:
+                    print("Your Score for Finance is: 0")
+                    
+                if "programming" in resume_reference:
+                    data_score = resume_reference.count("programming")
+                    print("Your Score for Data Analytics is: " + str(data_score))
+                
+                else:
+                    print("Your Score for Data Analytics is: 0")
+                    
+                if "health" in resume_reference:
+                    health_score = resume_reference.count("health")
+                    print("Your Score for Health Care is: " + str(health_score))
+                
+                else:
+                    print("Your Score for Health Care is: 0")
+            
             elif (matchPercentage >= 80):
                 print("You Have Achieved A Great Match Score ")
                 print("You Have These Keywords Matched:")
@@ -229,6 +413,51 @@ while True:
                 matches = set_1.intersection(set_2)
                 print(matches)
                 
+                print("Your Resume is Optimised for these Industry")
+                print("Each Industry is rated out of 10")
+                
+                if "quality" in resume_reference:
+                    quality_score = resume_reference.count("quality")
+                    print("Your Score for Quality Assurance is: " + str(quality_score))
+                
+                else:
+                    print("Your Score for Quality Assurance is: 0")
+                    
+                if "operations" in resume_reference:
+                    operations_score = resume_reference.count("operations")
+                    print("Your Score for Operations is: " + str(operations_score))
+                
+                else:
+                    print("Your Score for Operations is: 0")
+                    
+                if "inventory" in resume_reference:
+                    supply_score = resume_reference.count("inventory")
+                    print("Your Score for Supply Chain is: " + str(supply_score))
+                
+                else:
+                    print("Your Score for Supply Chain is: 0")
+                    
+                if "administration" in resume_reference:
+                    project_score = resume_reference.count("administration")
+                    print("Your Score for Finance is: " + str(project_score))
+                
+                else:
+                    print("Your Score for Finance is: 0")
+                    
+                if "programming" in resume_reference:
+                    data_score = resume_reference.count("programming")
+                    print("Your Score for Data Analytics is: " + str(data_score))
+                
+                else:
+                    print("Your Score for Data Analytics is: 0")
+                    
+                if "health" in resume_reference:
+                    health_score = resume_reference.count("health")
+                    print("Your Score for Health Care is: " + str(health_score))
+                
+                else:
+                    print("Your Score for Health Care is: 0")
+       
             else:
                 print("Application is missing vital Keywords:")
                 #cVect.get_feature_names - printing this method will return strings of both sets
@@ -240,7 +469,7 @@ while True:
                 set_1 = set(string_1.split())
                 set_2 = set(string_2.split())
 
-                # Compare the sets to find where they both have different value
+                # Compare the sets to find where they both have the same value
                 
                 differences = set_2.difference(set_1)
                 print(*differences)
@@ -258,7 +487,48 @@ while True:
                 matches = set_1.intersection(set_2)
                 print(matches)
                 
-        q = sys.exit() 
-        if Press == q:
-            sys.exit()
-               
+                print("Your Resume is Optimised for these Industry")
+                print("Each Industry is rated out of 10")
+                
+                if "quality" in resume_reference:
+                    quality_score = resume_reference.count("quality")
+                    print("Your Score for Quality Assurance is: " + str(quality_score))
+                
+                else:
+                    print("Your Score for Quality Assurance is: 0")
+                    
+                if "operations" in resume_reference:
+                    operations_score = resume_reference.count("operations")
+                    print("Your Score for Operations is: " + str(operations_score))
+                
+                else:
+                    print("Your Score for Operations is: 0")
+                    
+                if "inventory" in resume_reference:
+                    supply_score = resume_reference.count("inventory")
+                    print("Your Score for Supply Chain is: " + str(supply_score))
+                
+                else:
+                    print("Your Score for Supply Chain is: 0")
+                    
+                if "administration" in resume_reference:
+                    project_score = resume_reference.count("administration")
+                    print("Your Score for Finance is: " + str(project_score))
+                
+                else:
+                    print("Your Score for Finance is: 0")
+                    
+                if "programming" in resume_reference:
+                    data_score = resume_reference.count("programming")
+                    print("Your Score for Data Analytics is: " + str(data_score))
+                
+                else:
+                    print("Your Score for Data Analytics is: 0")
+                    
+                if "health" in resume_reference:
+                    health_score = resume_reference.count("health")
+                    print("Your Score for Health Care is: " + str(health_score))
+                
+                else:
+                    print("Your Score for Health Care is: 0")
+                
