@@ -1,8 +1,10 @@
 #" IMPORT ALL REQUIRED MODULES NEEDED FOR THIS APPLICANT TRACKING SYSTEM"
 #" IMPORT DOCX2TXT MODULE TO CONVERT DOCX FILES INTO A CONSUMABLE TEXT FORMAT"
 
+import time
 import docx2txt
 import sys 
+from selenium import webdriver
 from pdf2docx import Converter
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -24,6 +26,11 @@ while True:
             sys.exit()
             
         if Press == 1:
+            print("Enter Job Title Here")
+            Title = str(input())
+            
+            print("")
+            
             print("Copy PDF Resume Name Here")
             PDFresume = input()
             pdf_file = r"C:\Users\kiddo\OneDrive\Desktop\Automate Codes 1 -6/" + PDFresume + ".pdf" # source file
@@ -32,9 +39,12 @@ while True:
             #" Please note your C: drive/ file path information will be required to proceed"
             #" E.g \Users\name\location of file"
             
+            print("")
+
             print("Please Wait for Process PDF Converter To Complete")
             print("You Will be Prompt For Further Information")
-           
+            print("")
+            
             # convert resume pdf to docx
             cv = Converter(pdf_file)
             cv.convert(docx_file, start=0, end=None)
@@ -48,6 +58,8 @@ while True:
             docx_file = r"C:\Users\kiddo\OneDrive\Desktop\Automate Codes 1 -6/" + PDFJobDesc + ".docx"  # destination file
 
             print("Please Wait for Process PDF Converter To Complete")
+            print("")
+            
             
             # convert job description pdf to docx
             cv = Converter(pdf_file)
@@ -58,8 +70,14 @@ while True:
             #" PRINT(RESUME) COULD NOT PROCEED"
             #" INSERTED .encode("cp1252", [-source of error] errors= "ignore") [-given instructions to ignore]
             
+            print("")
+            print("This Is Your Resume:")
+            
             resume = docx2txt.process(PDFresume + ".docx")
             print((resume).encode('cp1252', errors='ignore'))
+            
+            print("")
+            print("This Is Your Job Description:")
             
             jobdescription = docx2txt.process(PDFJobDesc + ".docx")
             print((jobdescription).encode('cp1252', errors='ignore'))
@@ -71,7 +89,9 @@ while True:
 
             cv = CountVectorizer()
             count_matrix = cv.fit_transform(text)
-
+            
+            print("")
+            
             print("\nSimilarity Scores:")
             print(cosine_similarity(count_matrix))
 
@@ -90,7 +110,7 @@ while True:
             print("Your resume matches about " + str(matchPercentage) + "%" + " of the job description")
 
             if (matchPercentage >= 50 < 80):
-                revised_sum = matchPercentage + 10
+                revised_sum = matchPercentage + 15
                
                #" If a match percentage is greater or equal to 50 but less than 80, an optimise score of 10 is added"
                
@@ -110,6 +130,7 @@ while True:
                 differences = set_2.difference(set_1)
                 print(*differences)
                 
+                print("")
                 print("Your Resume is Optimised for these Industry")
                 print("Each Industry is rated out of 10")
                 
@@ -154,6 +175,30 @@ while True:
                 
                 else:
                     print("Your Score for Health Care is: 0")
+                    
+                    print("")
+                    print("Press Enter To See Your Score In ATS Browser")
+                    Enter = input()
+                    
+                    web = webdriver.Chrome()
+                    web.get("https://www.rezrunner.com/new-run/")
+
+                    time.sleep(0.5)
+
+                    Jobtitle = Title
+                    insertTitle = web.find_element_by_xpath('//*[@id="id_job"]')
+                    insertTitle.send_keys(Jobtitle) 
+
+                    resumeInsert = resume_reference
+                    insert1 = web.find_element_by_xpath('//*[@id="id_cv"]')
+                    insert1.send_keys(resumeInsert)
+
+                    jobDescInsert = job_reference
+                    insert2 = web.find_element_by_xpath('//*[@id="id_desc"]')
+                    insert2.send_keys(jobDescInsert)
+
+                    submitButton = web.find_element_by_xpath('//*[@id="scan"]')
+                    submitButton.click()
                 
             elif (matchPercentage >= 80):
                 print("You Have Achieved A Great Match Score ")
@@ -170,6 +215,7 @@ while True:
                 matches = set_1.intersection(set_2)
                 print(matches)
                 
+                print("")
                 print("Your Resume is Optimised for these Industry")
                 print("Each Industry is rated out of 10")
                 
@@ -214,6 +260,30 @@ while True:
                 
                 else:
                     print("Your Score for Health Care is: 0")
+                    
+                    print("")
+                    print("Press Enter To See Your Score In ATS Browser")
+                    Enter = input()
+                    
+                    web = webdriver.Chrome()
+                    web.get("https://www.rezrunner.com/new-run/")
+
+                    time.sleep(0.5)
+
+                    Jobtitle = Title
+                    insertTitle = web.find_element_by_xpath('//*[@id="id_job"]')
+                    insertTitle.send_keys(Jobtitle) 
+
+                    resumeInsert = resume_reference
+                    insert1 = web.find_element_by_xpath('//*[@id="id_cv"]')
+                    insert1.send_keys(resumeInsert)
+
+                    jobDescInsert = job_reference
+                    insert2 = web.find_element_by_xpath('//*[@id="id_desc"]')
+                    insert2.send_keys(jobDescInsert)
+
+                    submitButton = web.find_element_by_xpath('//*[@id="scan"]')
+                    submitButton.click()
        
             else:
                 print("Application is missing vital Keywords:")
@@ -249,6 +319,7 @@ while True:
                 matches = set_1.intersection(set_2)
                 print(matches)
                 
+                print("")
                 print("Your Resume is Optimised for these Industry")
                 print("Each Industry is rated out of 10")
                 
@@ -293,22 +364,61 @@ while True:
                 
                 else:
                     print("Your Score for Health Care is: 0")
+                    
+                    print("")
+                    print("Press Enter To See Your Score In ATS Browser")
+                    Enter = input()
+                    
+                    web = webdriver.Chrome()
+                    web.get("https://www.rezrunner.com/new-run/")
+
+                    time.sleep(0.5)
+
+                    Jobtitle = Title
+                    insertTitle = web.find_element_by_xpath('//*[@id="id_job"]')
+                    insertTitle.send_keys(Jobtitle) 
+
+                    resumeInsert = resume_reference
+                    insert1 = web.find_element_by_xpath('//*[@id="id_cv"]')
+                    insert1.send_keys(resumeInsert)
+
+                    jobDescInsert = job_reference
+                    insert2 = web.find_element_by_xpath('//*[@id="id_desc"]')
+                    insert2.send_keys(jobDescInsert)
+
+                    submitButton = web.find_element_by_xpath('//*[@id="scan"]')
+                    submitButton.click()
        
         #" This Section is the alternative if the User posses Docx files instead of PDF"
         
         if Press == 2:
+            print("Enter Job Title Here")
+            Title = str(input())
+            
+            print("")
+            
             print("Copy Docx Resume Name Here")
             DocxResume = input()
             resume = docx2txt.process(DocxResume + ".docx")
+            
+            print("")
+            print("This Is Your Resume")
+            
             print((resume).encode('cp1252', errors='ignore'))
 
             #" CREATE A VARIABLE TO PROCESS JOBDESCRIPTION DOCX FILE INTO TEXT FORMAT"
             #" PRINT(JOBDESCRIPTION) COULD NOT PROCEED"
             #" INSERTED .encode("cp1252", [-source of error] errors= "ignore") [-given instructions to ignore]
             
+            print("")
+            
             print("Copy Docx Job Description Name Here")
             DocxJobDesc = input()
             jobdescription = docx2txt.process(DocxJobDesc + ".docx")
+            
+            print("")
+            print("This Is Your Job Description")
+            
             print((jobdescription).encode('cp1252', errors='ignore'))
 
             #" CV.FIT_TRANSFORM() TAKES ONLY ONE ARGUMENT"
@@ -336,7 +446,7 @@ while True:
             print("Your resume matches about " + str(matchPercentage) + "%" + " of the job description")
 
             if (matchPercentage >= 50 < 80):
-                revised_sum = matchPercentage + 10
+                revised_sum = matchPercentage + 15
                 print("Press Enter To See Your Resume Complete Optimised Score")
                 Enter = input()
                 print("Your Total Resume match score is " + str(revised_sum) + "%")
@@ -353,6 +463,7 @@ while True:
                 differences = set_2.difference(set_1)
                 print(*differences)
                 
+                print("")
                 print("Your Resume is Optimised for these Industry")
                 print("Each Industry is rated out of 10")
                 
@@ -397,6 +508,30 @@ while True:
                 
                 else:
                     print("Your Score for Health Care is: 0")
+                    
+                    print("")
+                    print("Press Enter To See Your Score In ATS Browser")
+                    Enter = input()
+                    
+                    web = webdriver.Chrome()
+                    web.get("https://www.rezrunner.com/new-run/")
+
+                    time.sleep(0.5)
+
+                    Jobtitle = Title
+                    insertTitle = web.find_element_by_xpath('//*[@id="id_job"]')
+                    insertTitle.send_keys(Jobtitle) 
+
+                    resumeInsert = resume_reference
+                    insert1 = web.find_element_by_xpath('//*[@id="id_cv"]')
+                    insert1.send_keys(resumeInsert)
+
+                    jobDescInsert = job_reference
+                    insert2 = web.find_element_by_xpath('//*[@id="id_desc"]')
+                    insert2.send_keys(jobDescInsert)
+
+                    submitButton = web.find_element_by_xpath('//*[@id="scan"]')
+                    submitButton.click()
             
             elif (matchPercentage >= 80):
                 print("You Have Achieved A Great Match Score ")
@@ -413,6 +548,7 @@ while True:
                 matches = set_1.intersection(set_2)
                 print(matches)
                 
+                print("")
                 print("Your Resume is Optimised for these Industry")
                 print("Each Industry is rated out of 10")
                 
@@ -457,6 +593,30 @@ while True:
                 
                 else:
                     print("Your Score for Health Care is: 0")
+                    
+                    print("")
+                    print("Press Enter To See Your Score In ATS Browser")
+                    Enter = input()
+                    
+                    web = webdriver.Chrome()
+                    web.get("https://www.rezrunner.com/new-run/")
+
+                    time.sleep(0.5)
+
+                    Jobtitle = Title
+                    insertTitle = web.find_element_by_xpath('//*[@id="id_job"]')
+                    insertTitle.send_keys(Jobtitle) 
+
+                    resumeInsert = resume_reference
+                    insert1 = web.find_element_by_xpath('//*[@id="id_cv"]')
+                    insert1.send_keys(resumeInsert)
+
+                    jobDescInsert = job_reference
+                    insert2 = web.find_element_by_xpath('//*[@id="id_desc"]')
+                    insert2.send_keys(jobDescInsert)
+
+                    submitButton = web.find_element_by_xpath('//*[@id="scan"]')
+                    submitButton.click()
        
             else:
                 print("Application is missing vital Keywords:")
@@ -487,6 +647,7 @@ while True:
                 matches = set_1.intersection(set_2)
                 print(matches)
                 
+                print("")
                 print("Your Resume is Optimised for these Industry")
                 print("Each Industry is rated out of 10")
                 
@@ -531,4 +692,29 @@ while True:
                 
                 else:
                     print("Your Score for Health Care is: 0")
-                
+                    
+                    print("")
+                    print("Press Enter To See Your Score In ATS Browser")
+                    Enter = input()
+                    
+                    web = webdriver.Chrome()
+                    web.get("https://www.rezrunner.com/new-run/")
+
+                    time.sleep(0.5)
+
+                    Jobtitle = Title
+                    insertTitle = web.find_element_by_xpath('//*[@id="id_job"]')
+                    insertTitle.send_keys(Jobtitle) 
+
+                    resumeInsert = resume_reference
+                    insert1 = web.find_element_by_xpath('//*[@id="id_cv"]')
+                    insert1.send_keys(resumeInsert)
+
+                    jobDescInsert = job_reference
+                    insert2 = web.find_element_by_xpath('//*[@id="id_desc"]')
+                    insert2.send_keys(jobDescInsert)
+
+                    submitButton = web.find_element_by_xpath('//*[@id="scan"]')
+                    submitButton.click()
+                    
+               
