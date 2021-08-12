@@ -5,6 +5,7 @@ import time
 import docx2txt
 import sys 
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 from pdf2docx import Converter
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -98,7 +99,7 @@ while True:
             #" CREATE A KEYWORD GRABBER TO COMPARE BETWEEN RESUME AND JOB DESCRIPTION"
             #" CREATE A VARIABLE TO HOLD DOCX TO TEXT CONVERTED FILES FOR COMPARING"
             #" CREATE A COMPARE VARIABLE FOR CONVERTED DOCX TO TEXT FILES"
-
+            
             resume_reference = resume.lower()
             job_reference = jobdescription.lower()
             compare = [resume_reference , job_reference]
@@ -110,7 +111,7 @@ while True:
             print("Your resume matches about " + str(matchPercentage) + "%" + " of the job description")
 
             if (matchPercentage >= 50 < 80):
-                revised_sum = matchPercentage + 15
+                revised_sum = matchPercentage + 12
                
                #" If a match percentage is greater or equal to 50 but less than 80, an optimise score of 10 is added"
                
@@ -178,27 +179,38 @@ while True:
                     
                     print("")
                     print("Press Enter To See Your Score In ATS Browser")
+                    print("Please Make Sure To Copy Resume Extract To Clipboard Before Continuing!!")
                     Enter = input()
                     
                     web = webdriver.Chrome()
                     web.get("https://www.rezrunner.com/new-run/")
 
-                    time.sleep(0.5)
+                    time.sleep(1)
+                    
+                    closeSampleTour = web.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/a')
+                    closeSampleTour.click()
+                    
+                    time.sleep(1)
 
                     Jobtitle = Title
                     insertTitle = web.find_element_by_xpath('//*[@id="id_job"]')
                     insertTitle.send_keys(Jobtitle) 
-
+                    
                     resumeInsert = resume_reference
                     insert1 = web.find_element_by_xpath('//*[@id="id_cv"]')
-                    insert1.send_keys(resumeInsert)
-
-                    jobDescInsert = job_reference
+                    insert1.send_keys(Keys.CONTROL + 'v')
+                    
+                    time.sleep(1)
+                    
+                    jobDescInsert = jobdescription
                     insert2 = web.find_element_by_xpath('//*[@id="id_desc"]')
                     insert2.send_keys(jobDescInsert)
 
                     submitButton = web.find_element_by_xpath('//*[@id="scan"]')
                     submitButton.click()
+                    
+                    #submitButton = WebDriverWait(web, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="scan"]')))
+                    #submitButton.click()
                 
             elif (matchPercentage >= 80):
                 print("You Have Achieved A Great Match Score ")
@@ -263,27 +275,38 @@ while True:
                     
                     print("")
                     print("Press Enter To See Your Score In ATS Browser")
+                    print("Please Make Sure To Copy Resume Extract To Clipboard Before Continuing!!")
                     Enter = input()
                     
                     web = webdriver.Chrome()
                     web.get("https://www.rezrunner.com/new-run/")
 
-                    time.sleep(0.5)
+                    time.sleep(1)
+                    
+                    closeSampleTour = web.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/a')
+                    closeSampleTour.click()
+                    
+                    time.sleep(1)
 
                     Jobtitle = Title
                     insertTitle = web.find_element_by_xpath('//*[@id="id_job"]')
                     insertTitle.send_keys(Jobtitle) 
-
+                    
                     resumeInsert = resume_reference
                     insert1 = web.find_element_by_xpath('//*[@id="id_cv"]')
-                    insert1.send_keys(resumeInsert)
-
-                    jobDescInsert = job_reference
+                    insert1.send_keys(Keys.CONTROL + 'v')
+                    
+                    time.sleep(1)
+                    
+                    jobDescInsert = jobdescription
                     insert2 = web.find_element_by_xpath('//*[@id="id_desc"]')
                     insert2.send_keys(jobDescInsert)
 
-                    submitButton = web.find_element_by_xpath('//*[@id="scan"]')
+                    submitButton = web.find_element_by_xpath('//*[@id="scan"]') 
                     submitButton.click()
+                    
+                    #submitButton = WebDriverWait(web, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="scan"]')))
+                    #submitButton.click()
        
             else:
                 print("Application is missing vital Keywords:")
@@ -367,27 +390,38 @@ while True:
                     
                     print("")
                     print("Press Enter To See Your Score In ATS Browser")
+                    print("Please Make Sure To Copy Resume Extract To Clipboard Before Continuing!!")
                     Enter = input()
                     
                     web = webdriver.Chrome()
                     web.get("https://www.rezrunner.com/new-run/")
 
-                    time.sleep(0.5)
+                    time.sleep(1)
+                    
+                    closeSampleTour = web.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/a')
+                    closeSampleTour.click()
+                    
+                    time.sleep(1)
 
                     Jobtitle = Title
                     insertTitle = web.find_element_by_xpath('//*[@id="id_job"]')
                     insertTitle.send_keys(Jobtitle) 
-
+                    
                     resumeInsert = resume_reference
                     insert1 = web.find_element_by_xpath('//*[@id="id_cv"]')
-                    insert1.send_keys(resumeInsert)
-
-                    jobDescInsert = job_reference
+                    insert1.send_keys(Keys.CONTROL + 'v')
+                    
+                    time.sleep(1)
+                    
+                    jobDescInsert = jobdescription
                     insert2 = web.find_element_by_xpath('//*[@id="id_desc"]')
                     insert2.send_keys(jobDescInsert)
 
                     submitButton = web.find_element_by_xpath('//*[@id="scan"]')
                     submitButton.click()
+                    
+                    #submitButton = WebDriverWait(web, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="scan"]')))
+                    #submitButton.click()
        
         #" This Section is the alternative if the User posses Docx files instead of PDF"
         
@@ -446,7 +480,7 @@ while True:
             print("Your resume matches about " + str(matchPercentage) + "%" + " of the job description")
 
             if (matchPercentage >= 50 < 80):
-                revised_sum = matchPercentage + 15
+                revised_sum = matchPercentage + 12
                 print("Press Enter To See Your Resume Complete Optimised Score")
                 Enter = input()
                 print("Your Total Resume match score is " + str(revised_sum) + "%")
@@ -511,27 +545,38 @@ while True:
                     
                     print("")
                     print("Press Enter To See Your Score In ATS Browser")
+                    print("Please Make Sure To Copy Resume Extract To Clipboard Before Continuing!!")
                     Enter = input()
                     
                     web = webdriver.Chrome()
                     web.get("https://www.rezrunner.com/new-run/")
 
-                    time.sleep(0.5)
+                    time.sleep(1)
+                    
+                    closeSampleTour = web.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/a')
+                    closeSampleTour.click()
+                    
+                    time.sleep(1)
 
                     Jobtitle = Title
                     insertTitle = web.find_element_by_xpath('//*[@id="id_job"]')
                     insertTitle.send_keys(Jobtitle) 
-
+                    
                     resumeInsert = resume_reference
                     insert1 = web.find_element_by_xpath('//*[@id="id_cv"]')
-                    insert1.send_keys(resumeInsert)
-
-                    jobDescInsert = job_reference
+                    insert1.send_keys(Keys.CONTROL + 'v')
+                    
+                    time.sleep(1)
+                    
+                    jobDescInsert = jobdescription
                     insert2 = web.find_element_by_xpath('//*[@id="id_desc"]')
                     insert2.send_keys(jobDescInsert)
 
                     submitButton = web.find_element_by_xpath('//*[@id="scan"]')
                     submitButton.click()
+                    
+                    #submitButton = WebDriverWait(web, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="scan"]')))
+                    #submitButton.click()
             
             elif (matchPercentage >= 80):
                 print("You Have Achieved A Great Match Score ")
@@ -596,27 +641,38 @@ while True:
                     
                     print("")
                     print("Press Enter To See Your Score In ATS Browser")
+                    print("Please Make Sure To Copy Resume Extract To Clipboard Before Continuing!!")
                     Enter = input()
                     
                     web = webdriver.Chrome()
                     web.get("https://www.rezrunner.com/new-run/")
 
-                    time.sleep(0.5)
+                    time.sleep(1)
+                    
+                    closeSampleTour = web.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/a')
+                    closeSampleTour.click()
+                    
+                    time.sleep(1)
 
                     Jobtitle = Title
                     insertTitle = web.find_element_by_xpath('//*[@id="id_job"]')
-                    insertTitle.send_keys(Jobtitle) 
-
+                    insertTitle.send_keys(Jobtitle)
+                    
                     resumeInsert = resume_reference
                     insert1 = web.find_element_by_xpath('//*[@id="id_cv"]')
-                    insert1.send_keys(resumeInsert)
-
-                    jobDescInsert = job_reference
+                    insert1.send_keys(Keys.CONTROL + 'v')
+                    
+                    time.sleep(1)
+                    
+                    jobDescInsert = jobdescription
                     insert2 = web.find_element_by_xpath('//*[@id="id_desc"]')
-                    insert2.send_keys(jobDescInsert)
+                    insert2.send_keys(jobDescInsert) 
 
                     submitButton = web.find_element_by_xpath('//*[@id="scan"]')
                     submitButton.click()
+                    
+                    #submitButton = WebDriverWait(web, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="scan"]')))
+                    #submitButton.click()
        
             else:
                 print("Application is missing vital Keywords:")
@@ -695,26 +751,36 @@ while True:
                     
                     print("")
                     print("Press Enter To See Your Score In ATS Browser")
+                    print("Please Make Sure To Copy Resume Extract To Clipboard Before Continuing!!")
                     Enter = input()
                     
                     web = webdriver.Chrome()
                     web.get("https://www.rezrunner.com/new-run/")
 
-                    time.sleep(0.5)
-
+                    time.sleep(1)
+                    
+                    closeSampleTour = web.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/a')
+                    closeSampleTour.click()
+                    
+                    time.sleep(1)
+                    
                     Jobtitle = Title
                     insertTitle = web.find_element_by_xpath('//*[@id="id_job"]')
                     insertTitle.send_keys(Jobtitle) 
-
+                    
                     resumeInsert = resume_reference
                     insert1 = web.find_element_by_xpath('//*[@id="id_cv"]')
-                    insert1.send_keys(resumeInsert)
-
-                    jobDescInsert = job_reference
+                    insert1.send_keys(Keys.CONTROL + 'v')
+            
+                    
+                    time.sleep(1)
+                    
+                    jobDescInsert = jobdescription
                     insert2 = web.find_element_by_xpath('//*[@id="id_desc"]')
                     insert2.send_keys(jobDescInsert)
 
                     submitButton = web.find_element_by_xpath('//*[@id="scan"]')
                     submitButton.click()
                     
-               
+                    #submitButton = WebDriverWait(web, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="scan"]')))
+                    #submitButton.click()
