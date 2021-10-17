@@ -12,6 +12,7 @@ p.s Newly Updated, This ATS Program now is in sync with Web Automation scripts t
 <img width="675" alt="ATS resume Scanner" src="https://user-images.githubusercontent.com/87822768/137640404-a69cb773-1c2c-4aee-a400-b3fb4f31fbbb.PNG">
 <img width="672" alt="ATS resume Scanner 2" src="https://user-images.githubusercontent.com/87822768/137640405-8872bbd2-e233-4f1f-bed1-ebb0ad81db18.PNG">
 <img width="674" alt="ATS resume Scanner 3" src="https://user-images.githubusercontent.com/87822768/137640406-a50d81de-df53-47ba-94cb-a3269b951068.PNG">
+<img width="672" alt="ATS resume Scanner 4" src="https://user-images.githubusercontent.com/87822768/137640585-0d8be123-0cfd-4b83-8dec-67acb0c8cdee.PNG">
 
 # Within this program you will be able to:
 
